@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: fastapi-ml-backend
+    env: python
+    plan: free
+    region: oregon  # You can change this to your nearest region
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    runtime: python
+    pythonVersion: 3.10.12
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MODEL_DRIVE_LINK
+        value: https://drive.google.com/uc?id=1NWARf_1m_ouX0O98O1qmGA2oYs9yUEn-
